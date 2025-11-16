@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Happy Birthday Haifa ❤️</title>
+
 <style>
     body {
         margin: 0;
-        padding: 0;
-        background: linear-gradient(135deg, #ff8fa3, #ff4d6d);
+        background: radial-gradient(circle at top, #ff9aa2, #ff6174, #ff2d55);
         font-family: "Georgia", serif;
         color: white;
         text-align: center;
@@ -16,56 +16,64 @@
 
     h1 {
         margin-top: 80px;
-        font-size: 50px;
+        font-size: 55px;
+        font-weight: bold;
+        text-shadow: 0 0 20px rgba(255,255,255,0.6);
         animation: fadeIn 2s ease-in-out;
     }
 
     .btn {
         margin-top: 40px;
-        padding: 14px 30px;
+        padding: 15px 40px;
         background: white;
-        color: #ff4d6d;
-        border-radius: 30px;
+        color: #ff2d55;
+        border-radius: 40px;
         border: none;
-        font-size: 20px;
+        font-size: 22px;
         cursor: pointer;
+        box-shadow: 0 5px 15px rgba(255,255,255,0.4);
         transition: 0.3s;
     }
-
     .btn:hover {
-        background: #ffe6ea;
+        transform: scale(1.08);
+        background: #ffe4ea;
     }
 
     #messageBox {
-        margin-top: 50px;
-        font-size: 28px;
+        margin-top: 60px;
+        font-size: 30px;
         width: 80%;
         margin-left: auto;
         margin-right: auto;
-        line-height: 1.5;
+        line-height: 1.7;
         display: none;
-        animation: fadeIn 2s ease-in-out;
+        opacity: 0;
+        animation: fadeIn 2s ease forwards;
+        text-shadow: 0 0 10px rgba(255,255,255,0.4);
     }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
+        from { opacity: 0; transform: translateY(25px);}
+        to { opacity: 1; transform: translateY(0);}
     }
 
+    /* Floating Hearts (reduced count) */
     .heart {
         position: fixed;
         bottom: -10px;
         color: #fff;
-        font-size: 20px;
-        animation: floatUp 6s linear infinite;
-        opacity: 0.7;
+        font-size: 22px;
+        animation: floatUp 7s linear infinite;
+        opacity: 0.65;
+        filter: drop-shadow(0 0 5px rgba(255,255,255,0.6));
     }
 
     @keyframes floatUp {
-        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-        100% { transform: translateY(-800px) rotate(360deg); opacity: 0; }
+        0% { transform: translateY(0) scale(1); opacity: 1; }
+        100% { transform: translateY(-800px) scale(1.5); opacity: 0; }
     }
 </style>
+
 </head>
 <body>
 
@@ -76,11 +84,11 @@
 
 <script>
 let messages = [
-    "Haifa, today is not just another day...",
-    "It’s the day the world received someone truly special.",
-    "You bring warmth, kindness, and beauty wherever you go.",
-    "May this year bring you endless happiness and love.",
-    "And may every dream in your heart come true.",
+    "Haifa, today is a beautiful reminder of how blessed the world is to have you...",
+    "Your kindness, your glow, your smile... they make everything brighter.",
+    "You deserve happiness that never fades and love that never ends.",
+    "May this year be full of magic, joy, and unforgettable moments.",
+    "And may your heart be surrounded with warmth, today and always.",
     "Happy Birthday, Haifa ❤️"
 ];
 
@@ -94,23 +102,30 @@ function start() {
     let interval = setInterval(() => {
         box.innerHTML = messages[index];
         index++;
-        if (index === messages.length) clearInterval(interval);
-    }, 2000);
+
+        if (index === messages.length) {
+            clearInterval(interval);
+        }
+    }, 2500);
 }
 
+// Floating hearts (less frequency)
 function createHeart() {
+    if (Math.random() < 0.5) return; // reduce heart count
+
     let heart = document.createElement("div");
     heart.className = "heart";
     heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (20 + Math.random() * 40) + "px";
-    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
-    document.body.appendChild(heart);
 
-    setTimeout(() => heart.remove(), 6000);
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (20 + Math.random() * 35) + "px";
+    heart.style.animationDuration = (6 + Math.random() * 3) + "s";
+
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 7000);
 }
 
-setInterval(createHeart, 400);
+setInterval(createHeart, 700);
 </script>
 
 </body>
