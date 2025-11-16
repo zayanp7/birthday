@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Haifa ❤️</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #ff8fa3, #ff4d6d);
+        font-family: "Georgia", serif;
+        color: white;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    h1 {
+        margin-top: 80px;
+        font-size: 50px;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    .btn {
+        margin-top: 40px;
+        padding: 14px 30px;
+        background: white;
+        color: #ff4d6d;
+        border-radius: 30px;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: #ffe6ea;
+    }
+
+    #messageBox {
+        margin-top: 50px;
+        font-size: 28px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.5;
+        display: none;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .heart {
+        position: fixed;
+        bottom: -10px;
+        color: #fff;
+        font-size: 20px;
+        animation: floatUp 6s linear infinite;
+        opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(-800px) rotate(360deg); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<h1>❤️ Happy Birthday Haifa ❤️</h1>
+<button class="btn" onclick="start()">Tap to Reveal Your Surprise</button>
+
+<div id="messageBox"></div>
+
+<script>
+let messages = [
+    "Haifa, today is not just another day...",
+    "It’s the day the world received someone truly special.",
+    "You bring warmth, kindness, and beauty wherever you go.",
+    "May this year bring you endless happiness and love.",
+    "And may every dream in your heart come true.",
+    "Happy Birthday, Haifa ❤️"
+];
+
+let index = 0;
+
+function start() {
+    document.querySelector(".btn").style.display = "none";
+    let box = document.getElementById("messageBox");
+    box.style.display = "block";
+
+    let interval = setInterval(() => {
+        box.innerHTML = messages[index];
+        index++;
+        if (index === messages.length) clearInterval(interval);
+    }, 2000);
+}
+
+function createHeart() {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (20 + Math.random() * 40) + "px";
+    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}
+
+setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
